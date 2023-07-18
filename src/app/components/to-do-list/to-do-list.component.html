@@ -18,11 +18,11 @@
   <ul class="list-group">
     <li
       *ngFor="let task of toDoList"
+      (click)="markTaskDone(task)"
       [ngClass]="{
         'd-none': task.done,
         'list-group-item d-flex align-items-center highlight-item': !task.done
       }"
-      (click)="markTaskDone(task)"
     >
       <ng-container *ngIf="!task.done">
         <i class="bi bi-dash-square text-warning me-2"></i>
@@ -35,8 +35,6 @@
         </button>
       </ng-container>
     </li>
-    <!-- </ul>
-  <ul class="list-group" > -->
     <span
       class="list-group-item"
       style="background-color: #6ee7b7"
