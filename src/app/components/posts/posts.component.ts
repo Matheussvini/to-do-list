@@ -15,10 +15,11 @@ export class PostsComponent {
     this.postsService.getAllPosts().subscribe({
       next: (response) => {
         console.log('response', response);
-        this.posts = response.splice(0, 10);
-        console.log('10 posts', this.posts);
+        const randomNumber = Math.floor(Math.random() * 100);
+        this.posts = response.splice(randomNumber, 10);
       },
       error: (error) => {
+        alert('Erro na requisição')
         console.error('Erro na requisição: ', error);
       },
     });

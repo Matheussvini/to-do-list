@@ -1,2 +1,28 @@
-<p>posts works!</p>
-<button (click)="getPosts()">Exibir posts</button>
+<div class="container mt-4">
+    <h5 class="mb-3">Este é apenas um exemplo de conexão com uma API aleatória:</h5>
+    <button class="btn btn-outline-secondary mb-3" (click)="getPosts()">Exibir posts</button>
+    <table class="table table-secondary">
+        <thead>
+            <tr>
+        <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th scope="col">UserId</th>
+                <th scope="col">Título</th>
+                <th scope="col">Corpo</th>
+            </tr>
+        </thead>
+        <tbody 
+            *ngFor="let post of posts, let i = index"
+        >
+            <tr class="">
+                <th scope="row">{{i + 1 }}</th>
+                <td>{{ post.id }}</td>
+                <td>{{ post.userId }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.body }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
