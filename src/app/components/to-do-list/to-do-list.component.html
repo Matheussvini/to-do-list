@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2>My ToDo List</h2>
+  <div class="input-group mb-3">
+    <i class="bi bi-list-task input-group-text"></i>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Digite sua tarefa..."
+      [(ngModel)]="newToDo.description"
+      (keyup.enter)="addToDo()"
+    />
+    <button class="btn btn-primary" (click)="addToDo()">
+      <i class="bi bi-plus-circle me-1"></i>
+      <span class="ms-1">Adicionar</span>
+    </button>
+  </div>
+
+  <ul class="list-group">
+    <li
+      *ngFor="let task of toDoList"
+      class="list-group-item d-flex align-items-center highlight-item"
+      (click)="markTaskDone(task)"
+    >
+      <i
+        class="bi me-2"
+        [ngClass]="{
+          'bi-check-square text-success': task.done,
+          'bi-dash-square text-warning': !task.done
+        }"
+      ></i>
+      <span [ngClass]="{ 'text-decoration-line-through': task.done }">
+        {{ task.description }}
+      </span>
+      <button class="btn btn-danger btn-sm ms-auto" (click)="deleteTask(task)">
+        <i class="bi bi-trash"></i>
+      </button>
+    </li>
+  </ul>
+</div>
